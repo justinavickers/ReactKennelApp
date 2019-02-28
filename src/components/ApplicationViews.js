@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import AnimalList from './animal/animalList'
 import LocationList from './location/locationList'
 import EmployeeList from './employee/employeeList'
+import OwnersList from './owners/ownersList'
 
 
 class ApplicationViews extends Component {
@@ -39,6 +40,15 @@ class ApplicationViews extends Component {
       .then(animals => this.setState({ animals: animals }))
   }
 
+  cancelService = (id) => {
+    fetch(`http://localhost:3002/owners/${id}`, {
+      "method": "DELETE"
+    })
+    .then(() => fetch("http://localhost:3002/owners"))
+    .then(r => r.json())
+    .then(owners => this.setState({owners: owners}))
+  }
+
   componentDidUpdate() {
     console.log("componentDidUpdate -- ApplicationViews")
   }
@@ -59,7 +69,7 @@ class ApplicationViews extends Component {
         .then(r => r.json()))
       .then(locations => newState.locations = locations)
       .then(() => fetch("http://localhost:3002/animalOwners")
-      .then(r => r.json()))
+        .then(r => r.json()))
       .then(animalOwners => newState.animalOwners = animalOwners)
       .then(() => this.setState(newState))
   }
@@ -80,6 +90,10 @@ class ApplicationViews extends Component {
         <Route path="/employees" render={(props) => {
           return <EmployeeList employees={this.state.employees}
             fireEmployee={this.fireEmployee} />
+        }} />
+        <Route path="/owners" render={(props) => {
+          return <OwnersList owners={this.state.owners}
+          cancelService={this.cancelService} />
         }} />
       </React.Fragment>
     )

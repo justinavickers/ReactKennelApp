@@ -35,11 +35,6 @@
       "phoneNumber": "615-668-4567"
     },
     {
-      "id": 5,
-      "name": "Fletcher Bangs",
-      "phoneNumber": "615-095-6783"
-    },
-    {
       "id": 6,
       "name": "Angela Lee",
       "phoneNumber": "615-600-2300"
@@ -58,11 +53,6 @@
     }
   ],
   "animalOwners": [
-    {
-      "id": 1,
-      "animalId": 1,
-      "ownerId": 5
-    },
     {
       "id": 2,
       "animalId": 2,
