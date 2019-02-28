@@ -23,9 +23,9 @@ class AnimalList extends Component {
                 />
                 )
             }
-            <button onClick={()=> {
+            <button onClick={()=>
                 this.props.loadAnimals()
-            }}>Reload Animals</button>
+            }>Reload Animals</button>
             </section>
         )
     }

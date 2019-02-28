@@ -19,7 +19,7 @@ class ApplicationViews extends Component {
     fetch(`http://localhost:3002/animals/${id}`, {
       "method": "DELETE"
     })
-      .then(() => fetch("http://localhost:5002/animals"))
+      .then(() => fetch("http://localhost:3002/animals"))
       .then(r => r.json())
       .then(animals => this.setState({ animals: animals }))
   }
@@ -73,7 +73,7 @@ class ApplicationViews extends Component {
         <Route path="/animals" render={(props) => {
           return <AnimalList animals={this.state.animals}
             owners={this.state.owners}
-            dischargeAnimal={this.state.dischargeAnimal}
+            dischargeAnimal={this.dischargeAnimal}
             animalOwners={this.state.animalOwners} />
         }} />
         <Route path="/employees" render={(props) => {
