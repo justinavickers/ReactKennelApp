@@ -11,10 +11,6 @@
     {
       "id": 3,
       "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
     }
   ],
   "owners": [
@@ -81,16 +77,6 @@
       "id": 4,
       "animalId": 4,
       "ownerId": 2
-    },
-    {
-      "id": 5,
-      "animalId": 5,
-      "ownerId": 4
-    },
-    {
-      "id": 6,
-      "animalId": 5,
-      "ownerId": 6
     }
   ],
   "animals": [
@@ -109,10 +95,6 @@
     {
       "id": 4,
       "name": "Henley"
-    },
-    {
-      "id": 5,
-      "name": "Derkins"
     }
   ]
 }

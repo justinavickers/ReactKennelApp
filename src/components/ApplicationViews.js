@@ -74,15 +74,13 @@ class ApplicationViews extends Component {
           return <AnimalList animals={this.state.animals}
             owners={this.state.owners}
             dischargeAnimal={this.dischargeAnimal}
-            animalOwners={this.state.animalOwners} />
+            animalOwners={this.state.animalOwners}
+            loadAnimals={this.getAllAnimalsAgain} />
         }} />
         <Route path="/employees" render={(props) => {
           return <EmployeeList employees={this.state.employees}
-            fireEmployee={this.state.fireEmployee} />
+            fireEmployee={this.fireEmployee} />
         }} />
-        {/* <Route path="/owners" render={(props) => {
-          return <OwnersList owners={this.state.owners} />
-        }} /> */}
       </React.Fragment>
     )
   }
