@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './animalList.css'
 import Animal from './animal'
 import './animalList.css'
 
@@ -11,6 +10,7 @@ class AnimalList extends Component {
                 this.props.animals.map(animal =>
                     <Animal key={`animal-${animal.id}`}
                    animal={animal}
+                   dischargeAnimal={this.props.dischargeAnimal}
                    owners={
                        this.props.animalOwners
                        .filter(ao => ao.animalId === animal.id)
@@ -23,6 +23,9 @@ class AnimalList extends Component {
                 />
                 )
             }
+            <button onClick={()=> {
+                this.props.loadAnimals()
+            }}>Reload Animals</button>
             </section>
         )
     }
