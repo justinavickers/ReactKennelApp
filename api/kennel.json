@@ -71,20 +71,19 @@
   ],
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles"
-    },
-    {
       "id": 2,
-      "name": "Jack"
+      "name": "Jack",
+      "breed": "Samoyed"
     },
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Angus",
+      "breed": "Boxer"
     },
     {
       "id": 4,
-      "name": "Henley"
+      "name": "Henley",
+      "breed": "Husky"
     }
   ]
 }

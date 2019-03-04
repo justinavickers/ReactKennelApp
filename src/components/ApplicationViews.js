@@ -4,6 +4,11 @@ import AnimalList from './animal/animalList'
 import LocationList from './location/locationList'
 import EmployeeList from './employee/employeeList'
 import OwnersList from './owners/ownersList'
+import AnimalManager from "../modules/AnimalManager"
+import LocationManager from '../modules/LocationManager';
+import EmployeeManager from '../modules/EmployeeManager'
+import OwnerManager from '../modules/OwnerManager'
+import AnimalDetail from './animal/animalDetail'
 
 
 class ApplicationViews extends Component {
@@ -44,9 +49,9 @@ class ApplicationViews extends Component {
     fetch(`http://localhost:3002/owners/${id}`, {
       "method": "DELETE"
     })
-    .then(() => fetch("http://localhost:3002/owners"))
-    .then(r => r.json())
-    .then(owners => this.setState({owners: owners}))
+      .then(() => fetch("http://localhost:3002/owners"))
+      .then(r => r.json())
+      .then(owners => this.setState({ owners: owners }))
   }
 
   componentDidUpdate() {
@@ -54,19 +59,20 @@ class ApplicationViews extends Component {
   }
 
   componentDidMount() {
+    AnimalManager.getAll().then(allAnimals => {
+      this.setState({
+        animals: allAnimals
+      })
+    })
     const newState = {}
 
-    fetch("http://localhost:3002/animals")
-      .then(r => r.json())
+    AnimalManager.getAll()
       .then(animals => newState.animals = animals)
-      .then(() => fetch("http://localhost:3002/employees")
-        .then(r => r.json()))
+      .then(() => EmployeeManager.getAll())
       .then(employees => newState.employees = employees)
-      .then(() => fetch("http://localhost:3002/owners")
-        .then(r => r.json()))
+      .then(r => OwnerManager.getAll())
       .then(owners => newState.owners = owners)
-      .then(() => fetch("http://localhost:3002/locations")
-        .then(r => r.json()))
+      .then(r => LocationManager.getAll())
       .then(locations => newState.locations = locations)
       .then(() => fetch("http://localhost:3002/animalOwners")
         .then(r => r.json()))
@@ -77,10 +83,14 @@ class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+        <Route exact path="/animals/:animalId(\d+)" render={(props) => {
+          return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal}
+          animals={this.state.animals} />
+        }} />
         <Route exact path="/" render={(props) => {
           return <LocationList locations={this.state.locations} />
         }} />
-        <Route path="/animals" render={(props) => {
+        <Route exact path="/animals" render={(props) => {
           return <AnimalList animals={this.state.animals}
             owners={this.state.owners}
             dischargeAnimal={this.dischargeAnimal}
@@ -93,7 +103,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/owners" render={(props) => {
           return <OwnersList owners={this.state.owners}
-          cancelService={this.cancelService} />
+            cancelService={this.cancelService} />
         }} />
       </React.Fragment>
     )
