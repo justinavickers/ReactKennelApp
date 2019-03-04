@@ -15,11 +15,6 @@
   ],
   "owners": [
     {
-      "id": 1,
-      "name": "Ryan Tanay",
-      "phoneNumber": "615-222-3457"
-    },
-    {
       "id": 2,
       "name": "Emma Beaton",
       "phoneNumber": "615-675-3498"
@@ -59,11 +54,6 @@
       "ownerId": 3
     },
     {
-      "id": 3,
-      "animalId": 3,
-      "ownerId": 1
-    },
-    {
       "id": 4,
       "animalId": 4,
       "ownerId": 2
@@ -84,6 +74,21 @@
       "id": 4,
       "name": "Henley",
       "breed": "Husky"
+    },
+    {
+      "id":5,
+      "name": "Castor",
+      "breed": "Pit Bull"
+    },
+    {
+      "id": 6,
+      "name": "Athena",
+      "breed": "Border Collie Mix"
+    },
+    {
+      "id":7,
+      "name": "Sawyer",
+      "breed": "Lollie"
     }
   ]
 }

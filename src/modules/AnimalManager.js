@@ -6,5 +6,14 @@ export default {
   },
   getAll() {
     return fetch(`${settings.remoteURL}/animals`).then(e => e.json())
+  },
+  addAnimal(newAnimal) {
+    return fetch(`${settings.remoteURL}/animals`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newAnimal)
+    }).then(data => data.json())
   }
 }

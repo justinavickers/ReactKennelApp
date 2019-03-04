@@ -7,6 +7,14 @@ class AnimalList extends Component {
     render() {
         return (
             <section className="animals list">
+                <button type="button"
+                    className="btn btn-success"
+                    onClick={() => {
+                        this.props.history.push("/animals/new")
+                    }
+                    }>
+                    Admit Animal
+                    </button>
                 {
                     this.props.animals.map(animal =>
                         <Animal key={`animal-${animal.id}`}
